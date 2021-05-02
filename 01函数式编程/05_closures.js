@@ -10,7 +10,5 @@ function sentRequest() {
 }
 
 function ajax(data) {
-  setTimeout(() => {
-    data.success();
-  }, 1000);
+  data.success();
 }
