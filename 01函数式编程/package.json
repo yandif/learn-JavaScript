@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "run": "nodemon 00.js"
+    "run all": "nodemon 00.js --mode=0",
+    "run last": "nodemon 00.js --mode=1"
   },
   "author": "",
   "license": "ISC",

@@ -122,3 +122,37 @@ function ajax(data) {
 #### 函数柯里化
 
 把接受多个参数的函数转换成接受一个单一参数的函数
+
+```javascript
+const _ = require("loadsh");
+let animal = (species, name, size) => {
+  return name + " is a " + size + " " + species;
+};
+
+console.log(animal("dog", "dot", "tiny"));
+
+animal = species => name => size => {
+  return name + " is a " + size + " " + species;
+};
+console.log(animal("dog")("dot")("tiny"));
+
+animal = _.curry(animal, 1);
+
+console.log(animal("dog")("dot")("tiny"));
+```
+
+#### 递归
+
+一种函数调用自身的操作。
+
+```javascript
+let countDownFrom = num => {
+  if (num == 0) {
+    return;
+  }
+  console.log(num);
+  countDownFrom(num - 1);
+};
+
+countDownFrom(2);
+```

@@ -1,19 +1,26 @@
 const fs = require("fs");
+const args = require("minimist")(process.argv.slice(2));
+const mode = args["mode"];
+
 fs.readdir("./", function (err, files) {
   if (err) {
     return console.log("目录不存在");
   }
-  const fileList = files
-    .filter(x => /^(?!00)(.*)(\.js)$/.test(x))
-    .map(item => "./" + item);
-
-  run(fileList);
+  const regulex = /^(?!00)(.*)(\.js)$/;
+  const fileList = files.filter(x => regulex.test(x)).map(item => "./" + item);
+  run(fileList, mode);
 });
 
-function run(fileList) {
-  fileList.forEach(el => {
-    item(el);
-  });
+function run(fileList, mode) {
+  switch (mode) {
+    case 0:
+      fileList.forEach(el => {
+        item(el);
+      });
+      break;
+    case 1:
+      item(fileList[fileList.length - 1]);
+  }
 }
 
 function item(name) {
