@@ -156,3 +156,51 @@ let countDownFrom = num => {
 
 countDownFrom(2);
 ```
+
+#### Promise
+
+Promise 对象用于表示一个异步操作的最终完成 (或失败)及其结果值。
+
+```javascript
+let promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    Math.random() > 0.5 ? resolve("success") : reject("error");
+  }, 100);
+});
+promise
+  .then(val => {
+    console.log(val);
+  })
+  .catch(reason => {
+    console.log(reason);
+  })
+  .finally(() => {
+    console.log("finished");
+  });
+```
+
+#### Factory
+
+```javascript
+class Dog {
+  constructor() {
+    this.sound = "woof";
+  }
+  take() {
+    console.log(this.sound);
+  }
+}
+const dot = new Dog();
+dot.take();
+
+function dog() {
+  let sound = "woof";
+  return {
+    take: () => {
+      console.log(sound);
+    },
+  };
+}
+const dos = dog();
+dos.take();
+```
